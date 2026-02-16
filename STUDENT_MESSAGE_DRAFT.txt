@@ -1,0 +1,48 @@
+Subject: New React Project Assignment - Build Your Own Full-Stack App!
+
+Hello Team,
+
+We have a new project! This time, each of you will build a complete React application from scratch. I've set up a repository on GitHub with all the instructions.
+
+### What You're Building:
+Each student gets their own React app to build using React, React Router, Context API, and Tailwind CSS.
+
+### Action Items:
+1.  **Accept the Invitation**: Check your email for an invitation to the repository and accept it.
+2.  **Clone the Repository**:
+    ```bash
+    git clone <your-repo-url>
+    ```
+3.  **Read the Instructions**: Open `INSTRUCTIONS.md` and find your assigned project.
+4.  **Build Your App**: Complete ALL features described in your project section.
+5.  **Submit Changes**:
+    *   Push your work to the repository.
+    *   Create a **Pull Request (PR)** for review.
+
+### Deadline:
+**[INSERT DATE]**. Please make sure your Pull Request is submitted by then.
+
+### Assignments:
+*   **[Student Name]**: Student 1 - EduShare (`student1-edushare` folder)
+*   **[Student Name]**: Student 2 - ShopLocal (`student2-shoplocal` folder)
+*   **[Student Name]**: Student 3 - FitTrack (`student3-fittrack` folder)
+*   **[Student Name]**: Student 4 - EventHub (`student4-eventhub` folder)
+*   **[Student Name]**: Student 5 - JobBoard (`student5-jobboard` folder)
+
+### Key Technologies:
+- React 18+ with functional components & hooks
+- React Router v6 for navigation
+- Context API for state management
+- Tailwind CSS for styling
+- localStorage for data persistence
+- Third-party API integration
+
+### Tips:
+- Follow the **Recommended Build Order** in the instructions
+- Start with routing, then auth, then build features one by one
+- Test each feature as you build it
+- Commit frequently with meaningful messages
+
+This is a challenging but exciting project. Don't give up! If you get stuck, reach out. If you enjoy the challenge, feel free to go above and beyond!
+
+Let's build something amazing!

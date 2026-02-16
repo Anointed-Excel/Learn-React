@@ -1,0 +1,679 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>React Portfolio Projects Hub</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --indigo: #4F46E5;
+            --emerald: #059669;
+            --orange: #EA580C;
+            --rose: #E11D48;
+            --violet: #7C3AED;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #1e1b4b 0%, #4c1d95 50%, #7c3aed 100%);
+            min-height: 100vh;
+            padding: 40px 0;
+        }
+
+        .header {
+            text-align: center;
+            color: white;
+            margin-bottom: 50px;
+            padding: 40px 20px;
+        }
+
+        .header h1 {
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 15px;
+            text-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .header .subtitle {
+            font-size: 1.3rem;
+            opacity: 0.95;
+            font-weight: 300;
+        }
+
+        .header .project-badge {
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(10px);
+            padding: 10px 25px;
+            border-radius: 50px;
+            display: inline-block;
+            margin-bottom: 20px;
+            font-weight: 500;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .student-card {
+            background: white;
+            border-radius: 25px;
+            overflow: hidden;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            margin-bottom: 40px;
+        }
+
+        .student-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 30px 80px rgba(0, 0, 0, 0.4);
+        }
+
+        .student-header {
+            padding: 30px;
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .student-header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0) 100%);
+            pointer-events: none;
+        }
+
+        .student-number {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            width: 60px;
+            height: 60px;
+            background: rgba(255, 255, 255, 0.3);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            font-weight: 700;
+            backdrop-filter: blur(10px);
+        }
+
+        .student1 .student-header {
+            background: linear-gradient(135deg, var(--indigo) 0%, #818cf8 100%);
+        }
+
+        .student2 .student-header {
+            background: linear-gradient(135deg, var(--emerald) 0%, #34d399 100%);
+        }
+
+        .student3 .student-header {
+            background: linear-gradient(135deg, var(--orange) 0%, #fb923c 100%);
+        }
+
+        .student4 .student-header {
+            background: linear-gradient(135deg, var(--rose) 0%, #fb7185 100%);
+        }
+
+        .student5 .student-header {
+            background: linear-gradient(135deg, var(--violet) 0%, #a78bfa 100%);
+        }
+
+        .student-header h3 {
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin-bottom: 5px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .complexity-badge {
+            background: rgba(255, 255, 255, 0.3);
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            display: inline-block;
+            margin-top: 5px;
+            backdrop-filter: blur(10px);
+        }
+
+        .student-body {
+            padding: 30px;
+        }
+
+        .feature-card {
+            background: #f8f9fa;
+            border-radius: 15px;
+            padding: 25px;
+            margin-bottom: 20px;
+            border-left: 5px solid;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .feature-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 5px;
+            height: 100%;
+            transition: width 0.3s ease;
+        }
+
+        .feature-card:hover {
+            transform: translateX(5px);
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .feature-card:hover::before {
+            width: 100%;
+            opacity: 0.05;
+        }
+
+        .student1 .feature-card {
+            border-left-color: var(--indigo);
+        }
+
+        .student1 .feature-card::before {
+            background: var(--indigo);
+        }
+
+        .student2 .feature-card {
+            border-left-color: var(--emerald);
+        }
+
+        .student2 .feature-card::before {
+            background: var(--emerald);
+        }
+
+        .student3 .feature-card {
+            border-left-color: var(--orange);
+        }
+
+        .student3 .feature-card::before {
+            background: var(--orange);
+        }
+
+        .student4 .feature-card {
+            border-left-color: var(--rose);
+        }
+
+        .student4 .feature-card::before {
+            background: var(--rose);
+        }
+
+        .student5 .feature-card {
+            border-left-color: var(--violet);
+        }
+
+        .student5 .feature-card::before {
+            background: var(--violet);
+        }
+
+        .feature-card .feature-icon {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+            opacity: 0.8;
+        }
+
+        .feature-card h5 {
+            font-weight: 600;
+            margin-bottom: 10px;
+            font-size: 1.3rem;
+        }
+
+        .feature-card p {
+            color: #666;
+            margin-bottom: 15px;
+            line-height: 1.6;
+        }
+
+        .tech-stack {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+            margin-top: 10px;
+        }
+
+        .tech-badge {
+            background: white;
+            padding: 5px 12px;
+            border-radius: 15px;
+            font-size: 0.75rem;
+            font-weight: 500;
+            color: #666;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+        }
+
+        .route-badges {
+            display: flex;
+            gap: 6px;
+            flex-wrap: wrap;
+            margin-top: 12px;
+        }
+
+        .route-badge {
+            background: #e2e8f0;
+            padding: 3px 10px;
+            border-radius: 8px;
+            font-size: 0.7rem;
+            font-family: 'Courier New', monospace;
+            font-weight: 600;
+            color: #475569;
+        }
+
+        .instructions-btn {
+            background: rgba(255, 255, 255, 0.3);
+            border: 2px solid white;
+            color: white;
+            padding: 12px 30px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            backdrop-filter: blur(10px);
+            margin-top: 20px;
+        }
+
+        .instructions-btn:hover {
+            background: white;
+            color: #4c1d95;
+            transform: scale(1.05);
+        }
+
+        .floating-instructions {
+            position: fixed;
+            bottom: 30px;
+            left: 30px;
+            background: linear-gradient(135deg, #ffc107 0%, #ff9800 100%);
+            color: white;
+            padding: 15px 25px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            box-shadow: 0 5px 25px rgba(255, 193, 7, 0.4);
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            z-index: 1000;
+            animation: pulse-instructions 2s infinite;
+        }
+
+        .floating-instructions:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 35px rgba(255, 193, 7, 0.6);
+            color: white;
+        }
+
+        @keyframes pulse-instructions {
+
+            0%,
+            100% {
+                box-shadow: 0 5px 25px rgba(255, 193, 7, 0.4);
+            }
+
+            50% {
+                box-shadow: 0 5px 35px rgba(255, 193, 7, 0.7);
+            }
+        }
+
+        .footer {
+            text-align: center;
+            color: white;
+            padding: 30px 20px;
+            margin-top: 50px;
+        }
+
+        .footer p {
+            opacity: 0.9;
+            margin: 0;
+        }
+
+        .context-list {
+            display: flex;
+            gap: 6px;
+            flex-wrap: wrap;
+            margin-top: 8px;
+        }
+
+        .context-badge {
+            background: #f0fdf4;
+            padding: 3px 10px;
+            border-radius: 8px;
+            font-size: 0.7rem;
+            font-weight: 600;
+            color: #166534;
+            border: 1px solid #bbf7d0;
+        }
+
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 2.5rem;
+            }
+
+            .student-card {
+                margin-bottom: 30px;
+            }
+
+            .floating-instructions {
+                bottom: 20px;
+                left: 20px;
+                padding: 12px 20px;
+                font-size: 0.9rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Header -->
+    <div class="header">
+        <div class="container">
+            <div class="project-badge">
+                <i class="bi bi-code-square me-2"></i>React Portfolio Project
+            </div>
+            <h1><i class="bi bi-filetype-jsx me-3"></i>React Projects Hub</h1>
+            <p class="subtitle">5 Full-Stack React Apps &middot; 5 Students &middot; Real-World Applications</p>
+            <a href="../instructions.html" class="instructions-btn">
+                <i class="bi bi-book"></i>View Instructions
+            </a>
+        </div>
+    </div>
+
+    <div class="container">
+        <!-- Student 1: EduShare -->
+        <div class="student-card student1">
+            <div class="student-header">
+                <div class="student-number">1</div>
+                <h3>EduShare - Study Resource Platform</h3>
+            </div>
+            <div class="student-body">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="feature-card">
+                            <div class="feature-icon">📚</div>
+                            <h5>Resource Sharing</h5>
+                            <p>Upload and share study materials (PDFs, images, notes) with file preview. Browse, search, and filter resources by subject and grade level.</p>
+                            <div class="tech-stack">
+                                <span class="tech-badge">React</span>
+                                <span class="tech-badge">react-dropzone</span>
+                                <span class="tech-badge">localStorage</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="feature-card">
+                            <div class="feature-icon">&#11088;</div>
+                            <h5>Ratings & Reviews</h5>
+                            <p>Rate resources with a 5-star system, write reviews, bookmark favorites, and contact tutors via in-app messaging.</p>
+                            <div class="tech-stack">
+                                <span class="tech-badge">React Router</span>
+                                <span class="tech-badge">Context API</span>
+                                <span class="tech-badge">Tailwind CSS</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="route-badges">
+                    <span class="route-badge">/login</span>
+                    <span class="route-badge">/signup</span>
+                    <span class="route-badge">/home</span>
+                    <span class="route-badge">/upload</span>
+                    <span class="route-badge">/profile</span>
+                    <span class="route-badge">/resource/:id</span>
+                    <span class="route-badge">/messages</span>
+                </div>
+                <div class="context-list mt-2">
+                    <span class="context-badge">AuthContext</span>
+                    <span class="context-badge">ResourceContext</span>
+                    <span class="context-badge">NotificationContext</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Student 2: ShopLocal -->
+        <div class="student-card student2">
+            <div class="student-header">
+                <div class="student-number">2</div>
+                <h3>ShopLocal - Marketplace App</h3>
+            </div>
+            <div class="student-body">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="feature-card">
+                            <div class="feature-icon">&#128722;</div>
+                            <h5>Shopping & Cart</h5>
+                            <p>Full e-commerce experience: product listings with multiple images, shopping cart with quantity management, and multi-step checkout process.</p>
+                            <div class="tech-stack">
+                                <span class="tech-badge">React</span>
+                                <span class="tech-badge">react-dropzone</span>
+                                <span class="tech-badge">lodash.debounce</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="feature-card">
+                            <div class="feature-icon">&#128200;</div>
+                            <h5>Vendor Dashboard</h5>
+                            <p>Seller analytics with sales charts, order tracking with status updates, wishlist, reviews, and currency conversion API.</p>
+                            <div class="tech-stack">
+                                <span class="tech-badge">recharts</span>
+                                <span class="tech-badge">Context API</span>
+                                <span class="tech-badge">ExchangeRate API</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="route-badges">
+                    <span class="route-badge">/login</span>
+                    <span class="route-badge">/products</span>
+                    <span class="route-badge">/product/:id</span>
+                    <span class="route-badge">/cart</span>
+                    <span class="route-badge">/checkout</span>
+                    <span class="route-badge">/orders</span>
+                    <span class="route-badge">/dashboard</span>
+                    <span class="route-badge">/wishlist</span>
+                    <span class="route-badge">/profile</span>
+                </div>
+                <div class="context-list mt-2">
+                    <span class="context-badge">AuthContext</span>
+                    <span class="context-badge">CartContext</span>
+                    <span class="context-badge">ProductContext</span>
+                    <span class="context-badge">OrderContext</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Student 3: FitTrack -->
+        <div class="student-card student3">
+            <div class="student-header">
+                <div class="student-number">3</div>
+                <h3>FitTrack - Fitness & Workout Tracker</h3>
+            </div>
+            <div class="student-body">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="feature-card">
+                            <div class="feature-icon">&#127947;</div>
+                            <h5>Workout & Meals</h5>
+                            <p>Log workouts with sets, reps, and weights. Plan meals with calorie counting via Nutrition API. Upload progress photos.</p>
+                            <div class="tech-stack">
+                                <span class="tech-badge">React</span>
+                                <span class="tech-badge">react-dropzone</span>
+                                <span class="tech-badge">Nutrition API</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="feature-card">
+                            <div class="feature-icon">&#128202;</div>
+                            <h5>Progress Tracking</h5>
+                            <p>Dashboard with charts showing workout frequency, weight tracking, calorie goals. Exercise library with custom routines and achievement badges.</p>
+                            <div class="tech-stack">
+                                <span class="tech-badge">recharts</span>
+                                <span class="tech-badge">Context API</span>
+                                <span class="tech-badge">localStorage</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="route-badges">
+                    <span class="route-badge">/login</span>
+                    <span class="route-badge">/dashboard</span>
+                    <span class="route-badge">/workouts</span>
+                    <span class="route-badge">/meals</span>
+                    <span class="route-badge">/progress</span>
+                    <span class="route-badge">/library</span>
+                    <span class="route-badge">/profile</span>
+                    <span class="route-badge">/calculator</span>
+                </div>
+                <div class="context-list mt-2">
+                    <span class="context-badge">AuthContext</span>
+                    <span class="context-badge">WorkoutContext</span>
+                    <span class="context-badge">MealContext</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Student 4: EventHub -->
+        <div class="student-card student4">
+            <div class="student-header">
+                <div class="student-number">4</div>
+                <h3>EventHub - Event Management Platform</h3>
+            </div>
+            <div class="student-body">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="feature-card">
+                            <div class="feature-icon">&#127881;</div>
+                            <h5>Events & Tickets</h5>
+                            <p>Create events with banners, browse by category and date. Register with ticket selection and QR code generation for entry.</p>
+                            <div class="tech-stack">
+                                <span class="tech-badge">React</span>
+                                <span class="tech-badge">qrcode.react</span>
+                                <span class="tech-badge">react-calendar</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="feature-card">
+                            <div class="feature-icon">&#128172;</div>
+                            <h5>Chat & Notifications</h5>
+                            <p>Event discussion boards, calendar view, notification system, organizer dashboard with analytics, and weather API integration.</p>
+                            <div class="tech-stack">
+                                <span class="tech-badge">Context API</span>
+                                <span class="tech-badge">recharts</span>
+                                <span class="tech-badge">OpenWeather API</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="route-badges">
+                    <span class="route-badge">/login</span>
+                    <span class="route-badge">/events</span>
+                    <span class="route-badge">/event/:id</span>
+                    <span class="route-badge">/create-event</span>
+                    <span class="route-badge">/my-events</span>
+                    <span class="route-badge">/tickets</span>
+                    <span class="route-badge">/chat/:eventId</span>
+                    <span class="route-badge">/calendar</span>
+                    <span class="route-badge">/dashboard</span>
+                </div>
+                <div class="context-list mt-2">
+                    <span class="context-badge">AuthContext</span>
+                    <span class="context-badge">EventContext</span>
+                    <span class="context-badge">ChatContext</span>
+                    <span class="context-badge">NotificationContext</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Student 5: JobBoard -->
+        <div class="student-card student5">
+            <div class="student-header">
+                <div class="student-number">5</div>
+                <h3>JobBoard - Freelance Job Platform</h3>
+            </div>
+            <div class="student-body">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="feature-card">
+                            <div class="feature-icon">&#128188;</div>
+                            <h5>Jobs & Applications</h5>
+                            <p>Post jobs with briefs, browse with advanced filters, apply with resume upload. Full proposal management system with status tracking.</p>
+                            <div class="tech-stack">
+                                <span class="tech-badge">React</span>
+                                <span class="tech-badge">react-dropzone</span>
+                                <span class="tech-badge">lodash.debounce</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="feature-card">
+                            <div class="feature-icon">&#128172;</div>
+                            <h5>Messaging & Portfolio</h5>
+                            <p>In-app messaging, freelancer portfolio with work samples, two-way review system, payment calculator, and currency API.</p>
+                            <div class="tech-stack">
+                                <span class="tech-badge">Context API</span>
+                                <span class="tech-badge">localStorage</span>
+                                <span class="tech-badge">ExchangeRate API</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="route-badges">
+                    <span class="route-badge">/login</span>
+                    <span class="route-badge">/jobs</span>
+                    <span class="route-badge">/job/:id</span>
+                    <span class="route-badge">/post-job</span>
+                    <span class="route-badge">/applications</span>
+                    <span class="route-badge">/messages</span>
+                    <span class="route-badge">/portfolio</span>
+                    <span class="route-badge">/profile</span>
+                    <span class="route-badge">/saved</span>
+                    <span class="route-badge">/proposals/:id</span>
+                </div>
+                <div class="context-list mt-2">
+                    <span class="context-badge">AuthContext</span>
+                    <span class="context-badge">JobContext</span>
+                    <span class="context-badge">MessageContext</span>
+                    <span class="context-badge">ApplicationContext</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Floating Instructions Button -->
+    <a href="../instructions.html" class="floating-instructions">
+        <i class="bi bi-book-fill"></i>
+        <span>Student Instructions</span>
+    </a>
+
+    <!-- Footer -->
+    <div class="footer">
+        <div class="container">
+            <p><i class="bi bi-github me-2"></i>React Portfolio Projects &middot; Class of 2026 &middot; Built with React, Tailwind CSS & Context API</p>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>

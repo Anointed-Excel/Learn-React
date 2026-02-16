@@ -1,0 +1,1239 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>React Projects - Student Instructions</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --indigo: #4F46E5;
+            --emerald: #059669;
+            --orange: #EA580C;
+            --rose: #E11D48;
+            --violet: #7C3AED;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: #f8f9fa;
+            color: #333;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #1e1b4b 0%, #4c1d95 50%, #7c3aed 100%);
+            color: white;
+            padding: 60px 0;
+            text-align: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .header h1 {
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+
+        .header .subtitle {
+            opacity: 0.9;
+            margin-bottom: 20px;
+        }
+
+        .badge-purple {
+            background: rgba(255, 255, 255, 0.2);
+            font-size: 1rem;
+            padding: 8px 20px;
+            border-radius: 50px;
+            display: inline-block;
+            margin-bottom: 15px;
+        }
+
+        .student-nav {
+            background: white;
+            padding: 20px 0;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 180px;
+            z-index: 999;
+        }
+
+        .student-nav-btn {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            border: 3px solid;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 1.5rem;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            margin: 0 10px;
+        }
+
+        .student-nav-btn:hover {
+            transform: scale(1.1);
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .nav-btn-1 {
+            color: var(--indigo);
+            border-color: var(--indigo);
+        }
+
+        .nav-btn-1:hover {
+            background: var(--indigo);
+            color: white;
+        }
+
+        .nav-btn-2 {
+            color: var(--emerald);
+            border-color: var(--emerald);
+        }
+
+        .nav-btn-2:hover {
+            background: var(--emerald);
+            color: white;
+        }
+
+        .nav-btn-3 {
+            color: var(--orange);
+            border-color: var(--orange);
+        }
+
+        .nav-btn-3:hover {
+            background: var(--orange);
+            color: white;
+        }
+
+        .nav-btn-4 {
+            color: var(--rose);
+            border-color: var(--rose);
+        }
+
+        .nav-btn-4:hover {
+            background: var(--rose);
+            color: white;
+        }
+
+        .nav-btn-5 {
+            color: var(--violet);
+            border-color: var(--violet);
+        }
+
+        .nav-btn-5:hover {
+            background: var(--violet);
+            color: white;
+        }
+
+        .section-title {
+            font-weight: 700;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 3px solid;
+            display: inline-block;
+        }
+
+        .general-section {
+            background: white;
+            border-radius: 25px;
+            padding: 40px;
+            margin: 40px 0;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+        }
+
+        .student-card {
+            background: white;
+            border-radius: 25px;
+            overflow: hidden;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+            margin-bottom: 60px;
+            scroll-margin-top: 200px;
+        }
+
+        .student-header {
+            padding: 30px;
+            color: white;
+            position: relative;
+        }
+
+        .student-number {
+            position: absolute;
+            top: 20px;
+            right: 30px;
+            width: 70px;
+            height: 70px;
+            background: rgba(255, 255, 255, 0.3);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            font-weight: 700;
+            backdrop-filter: blur(10px);
+        }
+
+        .student1 .student-header {
+            background: linear-gradient(135deg, var(--indigo) 0%, #818cf8 100%);
+        }
+
+        .student2 .student-header {
+            background: linear-gradient(135deg, var(--emerald) 0%, #34d399 100%);
+        }
+
+        .student3 .student-header {
+            background: linear-gradient(135deg, var(--orange) 0%, #fb923c 100%);
+        }
+
+        .student4 .student-header {
+            background: linear-gradient(135deg, var(--rose) 0%, #fb7185 100%);
+        }
+
+        .student5 .student-header {
+            background: linear-gradient(135deg, var(--violet) 0%, #a78bfa 100%);
+        }
+
+        .student-body {
+            padding: 40px;
+        }
+
+        .complexity-badge {
+            background: rgba(255, 255, 255, 0.3);
+            padding: 8px 20px;
+            border-radius: 25px;
+            font-size: 1rem;
+            display: inline-block;
+            backdrop-filter: blur(10px);
+        }
+
+        .tool-box {
+            background: #f8f9fa;
+            border-radius: 15px;
+            padding: 25px;
+            margin-bottom: 25px;
+            border-left: 5px solid;
+        }
+
+        .student1 .tool-box {
+            border-left-color: var(--indigo);
+        }
+
+        .student2 .tool-box {
+            border-left-color: var(--emerald);
+        }
+
+        .student3 .tool-box {
+            border-left-color: var(--orange);
+        }
+
+        .student4 .tool-box {
+            border-left-color: var(--rose);
+        }
+
+        .student5 .tool-box {
+            border-left-color: var(--violet);
+        }
+
+        .tool-box h5 {
+            font-weight: 600;
+            margin-bottom: 15px;
+        }
+
+        .tool-icon {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+
+        .requirement-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .requirement-list li {
+            padding: 8px 0;
+            padding-left: 30px;
+            position: relative;
+        }
+
+        .requirement-list li:before {
+            content: "\2713";
+            position: absolute;
+            left: 0;
+            color: #51cf66;
+            font-weight: 700;
+            font-size: 1.2rem;
+        }
+
+        .code-box {
+            background: #1e1e1e;
+            color: #00ff88;
+            padding: 20px;
+            border-radius: 10px;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9rem;
+            overflow-x: auto;
+            margin: 15px 0;
+        }
+
+        .tip-box {
+            background: linear-gradient(135deg, rgba(255, 193, 7, 0.1) 0%, rgba(255, 193, 7, 0.05) 100%);
+            border: 2px solid #ffc107;
+            border-radius: 15px;
+            padding: 20px;
+            margin: 20px 0;
+        }
+
+        .tip-box i {
+            color: #ffc107;
+            font-size: 1.5rem;
+        }
+
+        .tech-badge {
+            background: white;
+            padding: 6px 15px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            display: inline-block;
+            margin: 5px 5px 5px 0;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .route-list {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+            margin: 10px 0;
+        }
+
+        .route-tag {
+            background: #e2e8f0;
+            padding: 4px 12px;
+            border-radius: 8px;
+            font-size: 0.8rem;
+            font-family: 'Courier New', monospace;
+            font-weight: 600;
+            color: #475569;
+        }
+
+        .context-tag {
+            background: #f0fdf4;
+            padding: 4px 12px;
+            border-radius: 8px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: #166534;
+            border: 1px solid #bbf7d0;
+        }
+
+        .checklist {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 15px 0;
+        }
+
+        .checklist li {
+            padding: 10px 0;
+            border-bottom: 1px solid #dee2e6;
+        }
+
+        .checklist li:last-child {
+            border-bottom: none;
+        }
+
+        .back-to-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, #1e1b4b 0%, #7c3aed 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-decoration: none;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+            transition: all 0.3s ease;
+        }
+
+        .back-to-top:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+            color: white;
+        }
+
+        .home-btn {
+            background: rgba(255, 255, 255, 0.2);
+            border: 2px solid white;
+            color: white;
+            padding: 10px 25px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            backdrop-filter: blur(10px);
+            margin-top: 20px;
+        }
+
+        .home-btn:hover {
+            background: white;
+            color: #4c1d95;
+            transform: translateY(-2px);
+        }
+
+        .build-order {
+            background: #f0f9ff;
+            border: 2px solid #0ea5e9;
+            border-radius: 15px;
+            padding: 25px;
+            margin: 25px 0;
+        }
+
+        .build-order h6 {
+            color: #0369a1;
+        }
+
+        .build-order ol {
+            margin: 0;
+            padding-left: 20px;
+        }
+
+        .build-order li {
+            padding: 5px 0;
+            color: #0c4a6e;
+        }
+
+        @media (max-width: 768px) {
+            .student-nav-btn {
+                width: 50px;
+                height: 50px;
+                font-size: 1.2rem;
+                margin: 0 5px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Header -->
+    <div class="header">
+        <div class="container">
+            <span class="badge-purple">
+                <i class="bi bi-filetype-jsx me-2"></i>React Portfolio Project
+            </span>
+            <h1><i class="bi bi-book me-3"></i>Student Instructions</h1>
+            <p class="subtitle">5 Full-Stack React Apps &middot; React Router &middot; Context API &middot; Tailwind CSS</p>
+            <a href="landing-page/index.html" class="home-btn">
+                <i class="bi bi-arrow-left"></i> Back to Hub
+            </a>
+        </div>
+    </div>
+
+    <!-- Student Navigation -->
+    <div class="student-nav">
+        <div class="container text-center">
+            <p class="mb-3 fw-bold">Jump to Your Project:</p>
+            <a href="#student1" class="student-nav-btn nav-btn-1">1</a>
+            <a href="#student2" class="student-nav-btn nav-btn-2">2</a>
+            <a href="#student3" class="student-nav-btn nav-btn-3">3</a>
+            <a href="#student4" class="student-nav-btn nav-btn-4">4</a>
+            <a href="#student5" class="student-nav-btn nav-btn-5">5</a>
+        </div>
+    </div>
+
+    <div class="container py-5">
+        <!-- General Instructions -->
+        <div class="general-section">
+            <h2 class="section-title" style="border-bottom-color: var(--violet); color: var(--violet);">
+                <i class="bi bi-info-circle me-2"></i>General Instructions for Everyone
+            </h2>
+
+            <div class="row mt-4">
+                <div class="col-lg-6">
+                    <h4><i class="bi bi-folder me-2 text-warning"></i>Project Structure</h4>
+                    <div class="code-box">
+                        src/<br>
+                        ├── components/<br>
+                        │ &nbsp; ├── common/ &nbsp; (Navbar, Footer, Loader)<br>
+                        │ &nbsp; ├── auth/ &nbsp; &nbsp; (LoginForm, SignupForm)<br>
+                        │ &nbsp; └── feature/ &nbsp;(Feature-specific)<br>
+                        ├── pages/ &nbsp; &nbsp; &nbsp; &nbsp;(Route pages)<br>
+                        ├── contexts/ &nbsp; &nbsp; (Context providers)<br>
+                        ├── hooks/ &nbsp; &nbsp; &nbsp; &nbsp;(Custom hooks)<br>
+                        ├── utils/ &nbsp; &nbsp; &nbsp; &nbsp;(Helpers, API calls)<br>
+                        ├── assets/<br>
+                        ├── App.jsx<br>
+                        └── index.css &nbsp; &nbsp; (Tailwind imports)
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <h4><i class="bi bi-terminal me-2 text-success"></i>Quick Setup</h4>
+                    <div class="code-box">
+                        cd react-projects/studentX-xxx<br>
+                        npx create-react-app .<br>
+                        npm install react-router-dom tailwindcss<br>
+                        &nbsp;&nbsp;postcss autoprefixer<br>
+                        npm install react-icons react-toastify uuid<br>
+                        npx tailwindcss init -p<br>
+                        npm start
+                    </div>
+                </div>
+            </div>
+
+            <div class="build-order mt-4">
+                <h6 class="fw-bold mb-3"><i class="bi bi-list-ol me-2"></i>Recommended Build Order</h6>
+                <ol>
+                    <li><strong>Setup</strong> - Create React app, install deps, configure Tailwind</li>
+                    <li><strong>Routing</strong> - Set up React Router with placeholder pages</li>
+                    <li><strong>Auth</strong> - Build AuthContext, Login, Signup, ProtectedRoute</li>
+                    <li><strong>Layout</strong> - Build Navbar, Footer, common components</li>
+                    <li><strong>Core Feature</strong> - Build the main feature (resources, products, etc.)</li>
+                    <li><strong>CRUD</strong> - Implement Create, Read, Update, Delete</li>
+                    <li><strong>Search/Filter</strong> - Add search and filter functionality</li>
+                    <li><strong>API Integration</strong> - Connect to external APIs</li>
+                    <li><strong>File Upload</strong> - Implement file upload features</li>
+                    <li><strong>Polish</strong> - Loading states, errors, toasts, responsive</li>
+                </ol>
+            </div>
+
+            <div class="tip-box mt-4">
+                <div class="d-flex align-items-start gap-3">
+                    <i class="bi bi-lightbulb-fill"></i>
+                    <div>
+                        <h5 class="fw-bold mb-2">Important Notes</h5>
+                        <ul class="mb-0">
+                            <li>Each student works in their own folder (no conflicts!)</li>
+                            <li>Use <strong>Tailwind CSS</strong> for all styling (no Bootstrap in React apps)</li>
+                            <li>Use <strong>Context API</strong> for state management (no Redux needed)</li>
+                            <li>Use <strong>localStorage</strong> for data persistence (no backend needed)</li>
+                            <li>Never commit <code>.env</code> files or <code>node_modules/</code></li>
+                            <li>Test thoroughly before committing</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Student 1: EduShare -->
+        <div class="student-card student1" id="student1">
+            <div class="student-header">
+                <div class="student-number">1</div>
+                <h2 class="mb-2">EduShare - Study Resource Platform</h2>
+            </div>
+            <div class="student-body">
+                <p class="mb-3"><strong>Description:</strong> A platform where students and tutors share, browse, and rate study resources.</p>
+
+                <div class="mb-3">
+                    <strong>Routes:</strong>
+                    <div class="route-list">
+                        <span class="route-tag">/login</span>
+                        <span class="route-tag">/signup</span>
+                        <span class="route-tag">/home</span>
+                        <span class="route-tag">/upload</span>
+                        <span class="route-tag">/profile</span>
+                        <span class="route-tag">/resource/:id</span>
+                        <span class="route-tag">/messages</span>
+                    </div>
+                </div>
+
+                <div class="mb-4">
+                    <strong>Contexts:</strong>
+                    <div class="route-list">
+                        <span class="context-tag">AuthContext</span>
+                        <span class="context-tag">ResourceContext</span>
+                        <span class="context-tag">NotificationContext</span>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="tool-box">
+                            <div class="tool-icon">&#128272;</div>
+                            <h5>Authentication & Profile</h5>
+                            <ul class="requirement-list">
+                                <li>Login/Signup forms with validation</li>
+                                <li>Role selection: Student or Tutor</li>
+                                <li>localStorage persistence</li>
+                                <li>Protected routes</li>
+                                <li>User profile with stats dashboard</li>
+                                <li>Edit profile (name, bio, avatar)</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="tool-box">
+                            <div class="tool-icon">&#128218;</div>
+                            <h5>Resource Management</h5>
+                            <ul class="requirement-list">
+                                <li>Upload materials with file preview</li>
+                                <li>Fields: title, description, subject, grade</li>
+                                <li>Browse all resources</li>
+                                <li>Search by title or description</li>
+                                <li>Filter by subject and grade level</li>
+                                <li>Individual resource detail page</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="tool-box">
+                            <div class="tool-icon">&#11088;</div>
+                            <h5>Ratings & Bookmarks</h5>
+                            <ul class="requirement-list">
+                                <li>5-star rating system</li>
+                                <li>Text reviews on resources</li>
+                                <li>Bookmark/favorite resources</li>
+                                <li>View bookmarked resources list</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="tool-box">
+                            <div class="tool-icon">&#128172;</div>
+                            <h5>Messaging</h5>
+                            <ul class="requirement-list">
+                                <li>Contact tutor via form</li>
+                                <li>Messages stored in localStorage</li>
+                                <li>View sent/received messages</li>
+                                <li>Message notifications</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="tip-box">
+                    <div class="d-flex align-items-start gap-3">
+                        <i class="bi bi-code-slash"></i>
+                        <div>
+                            <h6 class="fw-bold mb-2">Installation Commands</h6>
+                            <div class="code-box">
+                                npx create-react-app .<br>
+                                npm install react-router-dom tailwindcss postcss autoprefixer<br>
+                                npm install react-icons react-toastify uuid<br>
+                                npm install react-dropzone react-star-ratings<br>
+                                npx tailwindcss init -p
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="checklist">
+                    <h6 class="fw-bold mb-3"><i class="bi bi-check2-square me-2"></i>Completion Checklist</h6>
+                    <ul class="list-unstyled">
+                        <li>&#9744; React app running with Tailwind CSS</li>
+                        <li>&#9744; All 7 routes working</li>
+                        <li>&#9744; Auth with role selection (Student/Tutor)</li>
+                        <li>&#9744; Resource upload with file preview</li>
+                        <li>&#9744; Search and filter functional</li>
+                        <li>&#9744; Rating & review system</li>
+                        <li>&#9744; Bookmark feature</li>
+                        <li>&#9744; Messaging system</li>
+                        <li>&#9744; Responsive design</li>
+                        <li>&#9744; Code committed to GitHub</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Student 2: ShopLocal -->
+        <div class="student-card student2" id="student2">
+            <div class="student-header">
+                <div class="student-number">2</div>
+                <h2 class="mb-2">ShopLocal - Marketplace App</h2>
+            </div>
+            <div class="student-body">
+                <p class="mb-3"><strong>Description:</strong> A full-featured e-commerce marketplace where vendors list products and customers shop.</p>
+
+                <div class="mb-3">
+                    <strong>Routes:</strong>
+                    <div class="route-list">
+                        <span class="route-tag">/login</span>
+                        <span class="route-tag">/products</span>
+                        <span class="route-tag">/product/:id</span>
+                        <span class="route-tag">/cart</span>
+                        <span class="route-tag">/checkout</span>
+                        <span class="route-tag">/orders</span>
+                        <span class="route-tag">/dashboard</span>
+                        <span class="route-tag">/wishlist</span>
+                        <span class="route-tag">/profile</span>
+                    </div>
+                </div>
+
+                <div class="mb-4">
+                    <strong>Contexts:</strong>
+                    <div class="route-list">
+                        <span class="context-tag">AuthContext</span>
+                        <span class="context-tag">CartContext</span>
+                        <span class="context-tag">ProductContext</span>
+                        <span class="context-tag">OrderContext</span>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="tool-box">
+                            <div class="tool-icon">&#128722;</div>
+                            <h5>Products & Shopping</h5>
+                            <ul class="requirement-list">
+                                <li>Vendor: Create listings with multiple images</li>
+                                <li>Product fields: name, price, category, stock</li>
+                                <li>Browse with grid/list view toggle</li>
+                                <li>Live search with debouncing</li>
+                                <li>Filter by category, price, rating</li>
+                                <li>Sort by price, date, popularity</li>
+                                <li>Product page with image gallery</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="tool-box">
+                            <div class="tool-icon">&#128179;</div>
+                            <h5>Cart & Checkout</h5>
+                            <ul class="requirement-list">
+                                <li>Add/remove items from cart</li>
+                                <li>Quantity management (+/- buttons)</li>
+                                <li>Cart total calculation</li>
+                                <li>Cart badge in navbar</li>
+                                <li>Multi-step checkout (4 steps)</li>
+                                <li>Form validation at each step</li>
+                                <li>Order confirmation with ID</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="tool-box">
+                            <div class="tool-icon">&#128230;</div>
+                            <h5>Orders & Tracking</h5>
+                            <ul class="requirement-list">
+                                <li>Order history for customers</li>
+                                <li>Status: Pending > Processing > Shipped > Delivered</li>
+                                <li>Vendor: Update order statuses</li>
+                                <li>Wishlist (save for later)</li>
+                                <li>Product reviews & ratings</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="tool-box">
+                            <div class="tool-icon">&#128200;</div>
+                            <h5>Vendor Dashboard & API</h5>
+                            <ul class="requirement-list">
+                                <li>Sales analytics with charts (recharts)</li>
+                                <li>Revenue overview</li>
+                                <li>Top selling products</li>
+                                <li>Currency conversion (ExchangeRate API)</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="tip-box">
+                    <div class="d-flex align-items-start gap-3">
+                        <i class="bi bi-code-slash"></i>
+                        <div>
+                            <h6 class="fw-bold mb-2">Installation Commands</h6>
+                            <div class="code-box">
+                                npx create-react-app .<br>
+                                npm install react-router-dom tailwindcss postcss autoprefixer<br>
+                                npm install react-icons react-toastify uuid<br>
+                                npm install react-dropzone lodash.debounce recharts<br>
+                                npx tailwindcss init -p
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="tip-box">
+                    <div class="d-flex align-items-start gap-3">
+                        <i class="bi bi-key-fill"></i>
+                        <div>
+                            <h6 class="fw-bold mb-2">API Key Required (.env file)</h6>
+                            <div class="code-box">
+                                REACT_APP_EXCHANGE_API_KEY=your_key_here
+                            </div>
+                            <p class="mb-0 mt-2 small">Get your key at: exchangerate-api.com</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="checklist">
+                    <h6 class="fw-bold mb-3"><i class="bi bi-check2-square me-2"></i>Completion Checklist</h6>
+                    <ul class="list-unstyled">
+                        <li>&#9744; Auth with Vendor/Customer roles</li>
+                        <li>&#9744; Product listings with images</li>
+                        <li>&#9744; Search with debouncing</li>
+                        <li>&#9744; Shopping cart functional</li>
+                        <li>&#9744; Multi-step checkout</li>
+                        <li>&#9744; Order tracking</li>
+                        <li>&#9744; Wishlist & reviews</li>
+                        <li>&#9744; Vendor dashboard with charts</li>
+                        <li>&#9744; Currency API integration</li>
+                        <li>&#9744; Responsive design</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Student 3: FitTrack -->
+        <div class="student-card student3" id="student3">
+            <div class="student-header">
+                <div class="student-number">3</div>
+                <h2 class="mb-2">FitTrack - Fitness & Workout Tracker</h2>
+            </div>
+            <div class="student-body">
+                <p class="mb-3"><strong>Description:</strong> A personal fitness companion for logging workouts, planning meals, and tracking progress.</p>
+
+                <div class="mb-3">
+                    <strong>Routes:</strong>
+                    <div class="route-list">
+                        <span class="route-tag">/login</span>
+                        <span class="route-tag">/dashboard</span>
+                        <span class="route-tag">/workouts</span>
+                        <span class="route-tag">/meals</span>
+                        <span class="route-tag">/progress</span>
+                        <span class="route-tag">/library</span>
+                        <span class="route-tag">/profile</span>
+                        <span class="route-tag">/calculator</span>
+                    </div>
+                </div>
+
+                <div class="mb-4">
+                    <strong>Contexts:</strong>
+                    <div class="route-list">
+                        <span class="context-tag">AuthContext</span>
+                        <span class="context-tag">WorkoutContext</span>
+                        <span class="context-tag">MealContext</span>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="tool-box">
+                            <div class="tool-icon">&#127947;</div>
+                            <h5>Workout Logging</h5>
+                            <ul class="requirement-list">
+                                <li>Log: exercise, sets, reps, weight, duration</li>
+                                <li>Upload progress photos</li>
+                                <li>Workout history with date filters</li>
+                                <li>Edit/delete logged workouts</li>
+                                <li>Workout streak counter</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="tool-box">
+                            <div class="tool-icon">&#127869;</div>
+                            <h5>Meal Planner</h5>
+                            <ul class="requirement-list">
+                                <li>Add meals with food items</li>
+                                <li>Calorie counter (Nutrition API)</li>
+                                <li>Daily meal plan view</li>
+                                <li>Calorie total vs. goal</li>
+                                <li>Meal history</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="tool-box">
+                            <div class="tool-icon">&#128202;</div>
+                            <h5>Progress Dashboard</h5>
+                            <ul class="requirement-list">
+                                <li>Workout frequency chart (recharts)</li>
+                                <li>Weight tracking chart</li>
+                                <li>Calorie intake vs goal chart</li>
+                                <li>Weekly/monthly summaries</li>
+                                <li>Personal records</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="tool-box">
+                            <div class="tool-icon">&#128170;</div>
+                            <h5>Library & Extras</h5>
+                            <ul class="requirement-list">
+                                <li>Exercise library by category</li>
+                                <li>Pre-built workout routines</li>
+                                <li>Custom routines builder</li>
+                                <li>BMI calculator</li>
+                                <li>Achievement badges system</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="tip-box">
+                    <div class="d-flex align-items-start gap-3">
+                        <i class="bi bi-code-slash"></i>
+                        <div>
+                            <h6 class="fw-bold mb-2">Installation Commands</h6>
+                            <div class="code-box">
+                                npx create-react-app .<br>
+                                npm install react-router-dom tailwindcss postcss autoprefixer<br>
+                                npm install react-icons react-toastify uuid<br>
+                                npm install recharts react-dropzone axios<br>
+                                npx tailwindcss init -p
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="tip-box">
+                    <div class="d-flex align-items-start gap-3">
+                        <i class="bi bi-key-fill"></i>
+                        <div>
+                            <h6 class="fw-bold mb-2">API Key Required (.env file)</h6>
+                            <div class="code-box">
+                                REACT_APP_NUTRITION_API_KEY=your_key_here
+                            </div>
+                            <p class="mb-0 mt-2 small">Get your key at: calorieninjas.com/api or nutritionix.com</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="checklist">
+                    <h6 class="fw-bold mb-3"><i class="bi bi-check2-square me-2"></i>Completion Checklist</h6>
+                    <ul class="list-unstyled">
+                        <li>&#9744; Auth with fitness goals setup</li>
+                        <li>&#9744; Workout logging with CRUD</li>
+                        <li>&#9744; Progress photo upload</li>
+                        <li>&#9744; Meal planner with Nutrition API</li>
+                        <li>&#9744; Dashboard with charts</li>
+                        <li>&#9744; Exercise library</li>
+                        <li>&#9744; BMI calculator</li>
+                        <li>&#9744; Achievement badges</li>
+                        <li>&#9744; Responsive design</li>
+                        <li>&#9744; Code committed to GitHub</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Student 4: EventHub -->
+        <div class="student-card student4" id="student4">
+            <div class="student-header">
+                <div class="student-number">4</div>
+                <h2 class="mb-2">EventHub - Event Management Platform</h2>
+            </div>
+            <div class="student-body">
+                <p class="mb-3"><strong>Description:</strong> A platform for creating, discovering, and managing events with ticketing and discussion features.</p>
+
+                <div class="mb-3">
+                    <strong>Routes:</strong>
+                    <div class="route-list">
+                        <span class="route-tag">/login</span>
+                        <span class="route-tag">/events</span>
+                        <span class="route-tag">/event/:id</span>
+                        <span class="route-tag">/create-event</span>
+                        <span class="route-tag">/my-events</span>
+                        <span class="route-tag">/tickets</span>
+                        <span class="route-tag">/chat/:eventId</span>
+                        <span class="route-tag">/calendar</span>
+                        <span class="route-tag">/dashboard</span>
+                    </div>
+                </div>
+
+                <div class="mb-4">
+                    <strong>Contexts:</strong>
+                    <div class="route-list">
+                        <span class="context-tag">AuthContext</span>
+                        <span class="context-tag">EventContext</span>
+                        <span class="context-tag">ChatContext</span>
+                        <span class="context-tag">NotificationContext</span>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="tool-box">
+                            <div class="tool-icon">&#127881;</div>
+                            <h5>Event Management</h5>
+                            <ul class="requirement-list">
+                                <li>Create events with banner upload</li>
+                                <li>Fields: title, date, location, category, capacity</li>
+                                <li>Browse by category tabs</li>
+                                <li>Search by name or location</li>
+                                <li>Filter by category, date, price</li>
+                                <li>Individual event detail page</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="tool-box">
+                            <div class="tool-icon">&#127915;</div>
+                            <h5>Ticketing System</h5>
+                            <ul class="requirement-list">
+                                <li>Register for events</li>
+                                <li>Ticket types: General, VIP</li>
+                                <li>QR code generation (qrcode.react)</li>
+                                <li>View all purchased tickets</li>
+                                <li>Ticket detail page with QR</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="tool-box">
+                            <div class="tool-icon">&#128172;</div>
+                            <h5>Discussion & Notifications</h5>
+                            <ul class="requirement-list">
+                                <li>Event-specific discussion board</li>
+                                <li>Post messages, reply to threads</li>
+                                <li>Notification system</li>
+                                <li>Notification bell with unread count</li>
+                                <li>Mark notifications as read</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="tool-box">
+                            <div class="tool-icon">&#128197;</div>
+                            <h5>Calendar & Dashboard</h5>
+                            <ul class="requirement-list">
+                                <li>Calendar view (react-calendar)</li>
+                                <li>Organizer dashboard</li>
+                                <li>Attendee list per event</li>
+                                <li>Analytics charts (recharts)</li>
+                                <li>Weather API for event dates</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="tip-box">
+                    <div class="d-flex align-items-start gap-3">
+                        <i class="bi bi-code-slash"></i>
+                        <div>
+                            <h6 class="fw-bold mb-2">Installation Commands</h6>
+                            <div class="code-box">
+                                npx create-react-app .<br>
+                                npm install react-router-dom tailwindcss postcss autoprefixer<br>
+                                npm install react-icons react-toastify uuid<br>
+                                npm install qrcode.react react-calendar axios<br>
+                                npx tailwindcss init -p
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="tip-box">
+                    <div class="d-flex align-items-start gap-3">
+                        <i class="bi bi-key-fill"></i>
+                        <div>
+                            <h6 class="fw-bold mb-2">API Key Required (.env file)</h6>
+                            <div class="code-box">
+                                REACT_APP_OPENWEATHER_API_KEY=your_key_here
+                            </div>
+                            <p class="mb-0 mt-2 small">Get your key at: openweathermap.org/api</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="checklist">
+                    <h6 class="fw-bold mb-3"><i class="bi bi-check2-square me-2"></i>Completion Checklist</h6>
+                    <ul class="list-unstyled">
+                        <li>&#9744; Auth with Organizer/Attendee roles</li>
+                        <li>&#9744; Event creation with banner</li>
+                        <li>&#9744; Event browsing with filters</li>
+                        <li>&#9744; Ticket registration & QR codes</li>
+                        <li>&#9744; Discussion boards</li>
+                        <li>&#9744; Calendar view</li>
+                        <li>&#9744; Notification system</li>
+                        <li>&#9744; Organizer dashboard</li>
+                        <li>&#9744; Weather API integration</li>
+                        <li>&#9744; Responsive design</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Student 5: JobBoard -->
+        <div class="student-card student5" id="student5">
+            <div class="student-header">
+                <div class="student-number">5</div>
+                <h2 class="mb-2">JobBoard - Freelance Job Platform</h2>
+            </div>
+            <div class="student-body">
+                <p class="mb-3"><strong>Description:</strong> A freelance marketplace connecting clients who post jobs with freelancers who apply.</p>
+
+                <div class="mb-3">
+                    <strong>Routes:</strong>
+                    <div class="route-list">
+                        <span class="route-tag">/login</span>
+                        <span class="route-tag">/jobs</span>
+                        <span class="route-tag">/job/:id</span>
+                        <span class="route-tag">/post-job</span>
+                        <span class="route-tag">/applications</span>
+                        <span class="route-tag">/messages</span>
+                        <span class="route-tag">/portfolio</span>
+                        <span class="route-tag">/profile</span>
+                        <span class="route-tag">/saved</span>
+                        <span class="route-tag">/proposals/:id</span>
+                    </div>
+                </div>
+
+                <div class="mb-4">
+                    <strong>Contexts:</strong>
+                    <div class="route-list">
+                        <span class="context-tag">AuthContext</span>
+                        <span class="context-tag">JobContext</span>
+                        <span class="context-tag">MessageContext</span>
+                        <span class="context-tag">ApplicationContext</span>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="tool-box">
+                            <div class="tool-icon">&#128188;</div>
+                            <h5>Jobs & Applications</h5>
+                            <ul class="requirement-list">
+                                <li>Post jobs with file attachments</li>
+                                <li>Fields: title, budget, category, skills</li>
+                                <li>Browse with advanced filters</li>
+                                <li>Search with debouncing</li>
+                                <li>Sort by date, budget, proposals</li>
+                                <li>Apply with resume + cover letter</li>
+                                <li>Proposal status tracking</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="tool-box">
+                            <div class="tool-icon">&#128172;</div>
+                            <h5>Messaging System</h5>
+                            <ul class="requirement-list">
+                                <li>In-app messaging</li>
+                                <li>Conversation list sidebar</li>
+                                <li>Message thread view</li>
+                                <li>Message notifications</li>
+                                <li>Simulated real-time updates</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="tool-box">
+                            <div class="tool-icon">&#128444;</div>
+                            <h5>Portfolio & Reviews</h5>
+                            <ul class="requirement-list">
+                                <li>Upload work samples</li>
+                                <li>Portfolio gallery view</li>
+                                <li>Two-way review system</li>
+                                <li>Star ratings + text reviews</li>
+                                <li>Average rating calculation</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="tool-box">
+                            <div class="tool-icon">&#128176;</div>
+                            <h5>Extras & API</h5>
+                            <ul class="requirement-list">
+                                <li>Payment calculator (platform fees)</li>
+                                <li>Saved jobs list</li>
+                                <li>Application tracking dashboard</li>
+                                <li>Currency conversion API</li>
+                                <li>Skills tags system</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="tip-box">
+                    <div class="d-flex align-items-start gap-3">
+                        <i class="bi bi-code-slash"></i>
+                        <div>
+                            <h6 class="fw-bold mb-2">Installation Commands</h6>
+                            <div class="code-box">
+                                npx create-react-app .<br>
+                                npm install react-router-dom tailwindcss postcss autoprefixer<br>
+                                npm install react-icons react-toastify uuid<br>
+                                npm install react-dropzone lodash.debounce axios<br>
+                                npx tailwindcss init -p
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="tip-box">
+                    <div class="d-flex align-items-start gap-3">
+                        <i class="bi bi-key-fill"></i>
+                        <div>
+                            <h6 class="fw-bold mb-2">API Key Required (.env file)</h6>
+                            <div class="code-box">
+                                REACT_APP_EXCHANGE_API_KEY=your_key_here
+                            </div>
+                            <p class="mb-0 mt-2 small">Get your key at: exchangerate-api.com</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="checklist">
+                    <h6 class="fw-bold mb-3"><i class="bi bi-check2-square me-2"></i>Completion Checklist</h6>
+                    <ul class="list-unstyled">
+                        <li>&#9744; Auth with Freelancer/Client roles</li>
+                        <li>&#9744; Job posting and browsing</li>
+                        <li>&#9744; Search with debouncing</li>
+                        <li>&#9744; Application & proposal system</li>
+                        <li>&#9744; Messaging system</li>
+                        <li>&#9744; Portfolio section</li>
+                        <li>&#9744; Review & rating system</li>
+                        <li>&#9744; Payment calculator</li>
+                        <li>&#9744; Currency API integration</li>
+                        <li>&#9744; Responsive design</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Back to Top Button -->
+    <a href="#" class="back-to-top">
+        <i class="bi bi-arrow-up"></i>
+    </a>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Show/hide back to top button
+        const backToTop = document.querySelector('.back-to-top');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 300) {
+                backToTop.style.display = 'flex';
+            } else {
+                backToTop.style.display = 'none';
+            }
+        });
+    </script>
+</body>
+
+</html>
