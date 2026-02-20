@@ -1,100 +1,70 @@
-# Student 2: ShopLocal - Marketplace App
+# Getting Started with Create React App
 
-**Complexity:** High
-**Student:** [Your Name Here]
+This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## About
-A full-featured e-commerce marketplace where vendors list products and customers shop.
+## Available Scripts
 
-## Routes
-- `/login` - Login page
-- `/products` - Browse all products
-- `/product/:id` - Individual product details
-- `/cart` - Shopping cart
-- `/checkout` - Multi-step checkout
-- `/orders` - Order history & tracking
-- `/dashboard` - Seller analytics dashboard
-- `/wishlist` - Saved products
-- `/profile` - User profile
+In the project directory, you can run:
 
-## Contexts
-- **AuthContext** - User authentication (Vendor/Customer)
-- **CartContext** - Shopping cart state
-- **ProductContext** - Product CRUD operations
-- **OrderContext** - Order management
+### `npm start`
 
-## Dependencies
+Runs the app in the development mode.\
+Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 
-```bash
-npx create-react-app .
-npm install react-router-dom tailwindcss postcss autoprefixer
-npm install react-icons react-toastify uuid
-npm install react-dropzone lodash.debounce recharts
-npx tailwindcss init -p
-```
+The page will reload when you make changes.\
+You may also see any lint errors in the console.
 
-## How to Run
+### `npm test`
 
-```bash
-npm start
-```
+Launches the test runner in the interactive watch mode.\
+See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
-Then open: http://localhost:3000
+### `npm run build`
 
-## Key Features
-- Vendor & Customer authentication
-- Product listings with multiple images
-- Shopping cart with quantity management
-- Multi-step checkout process
-- Order history & tracking status
-- Live search with debouncing
-- Product reviews & ratings
-- Wishlist feature
-- Seller dashboard with analytics
-- Currency conversion API integration
+Builds the app for production to the `build` folder.\
+It correctly bundles React in production mode and optimizes the build for the best performance.
 
-## Color Theme
-Emerald (#059669)
+The build is minified and the filenames include the hashes.\
+Your app is ready to be deployed!
 
-## Checklist
+See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
-- [ ] React app created and running
-- [ ] Tailwind CSS configured
-- [ ] React Router set up with all routes
-- [ ] AuthContext with dual roles (Vendor/Customer)
-- [ ] CartContext with add/remove/quantity
-- [ ] ProductContext with CRUD
-- [ ] OrderContext with status tracking
-- [ ] Product listing page with grid/list view
-- [ ] Search with debouncing
-- [ ] Filter by category, price, rating
-- [ ] Product detail page with image gallery
-- [ ] Shopping cart functional
-- [ ] Multi-step checkout
-- [ ] Order history page
-- [ ] Seller dashboard with charts
-- [ ] Wishlist feature
-- [ ] Review & rating system
-- [ ] Currency conversion API
-- [ ] Responsive design
-- [ ] Loading states & error handling
-- [ ] Code committed to GitHub
+### `npm run eject`
 
-## Testing
+**Note: this is a one-way operation. Once you `eject`, you can't go back!**
 
-1. Test signup as Vendor and Customer
-2. Test creating a product listing (as Vendor)
-3. Test browsing and searching products
-4. Test adding items to cart
-5. Test quantity management in cart
-6. Test full checkout flow
-7. Test order history and status
-8. Test wishlist add/remove
-9. Test product reviews
-10. Test seller dashboard
-11. Test on mobile viewport
-12. Test page refresh (localStorage persistence)
+If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
 
-## Notes
+Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
 
-Add any additional notes, challenges faced, or extra features implemented here.
+You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+
+## Learn More
+
+You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+
+To learn React, check out the [React documentation](https://reactjs.org/).
+
+### Code Splitting
+
+This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+
+### Analyzing the Bundle Size
+
+This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+
+### Making a Progressive Web App
+
+This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+
+### Advanced Configuration
+
+This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+
+### Deployment
+
+This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+
+### `npm run build` fails to minify
+
+This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
